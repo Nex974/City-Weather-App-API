@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Weather Bubble</title>
+  <link rel="stylesheet" type="text/css" href="main.css">
+</head>
+<body>
+  <div class="container">
+    <div class="weather-form">
+      <h1>What's your city?</h1>
+      <form id="cityForm" action="/getWeather" method="POST">
+        <input type="text" id="cityInput" name="city" placeholder="Enter your city..." required>
+        <button type="submit">Check Weather</button>
+      </form>
+    </div>
+
+    <% if ( locals.weatherIcon && locals.temperature ) { %>
+      <div class="weather-display">
+        <div class="bubble">
+          <div class="weather-icon" id="weatherIcon" style="content: url('http://openweathermap.org/img/wn/<%= weatherIcon %>.png');"></div>
+          <div class="temperature" id="temperatureDisplay"><%= temperature %>°C</div>
+        </div>
+      </div>
+    <% } %>
+    <% if ( locals.message ) { %>
+        <h1><%= message %></h1>
+    <% } %>
+  </div>
+</body>
+</html>
